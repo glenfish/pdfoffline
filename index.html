@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="title" content="PDF Offline - Free PDF Creator">
-    <meta name="description" content="Create PDF's and optionally password protect them. Tool works online and offline, and can run locally in your browser with no internet connection. No signuip required. ">
+    <meta name="description" content="Create PDF's and optionally password protect them. Tool works online and offline, and can run locally in your browser with no internet connection. No signup required. ">
     <meta name="keywords" content="generate pdf, free pdf, create pdf, make pdf, password protect pdf, pdf generator, pdf creator tool, pdf maker tool, free pdf generator">
     <meta name="robots" content="index, follow">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="language" content="English">
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
-    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
-    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
-    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
-    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
-    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
-    <link rel="icon" type="image/png" sizes="192x192"  href="/android-icon-192x192.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="96x96" href="/favicon-96x96.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <!-- Add other icon links... -->
     <link rel="manifest" href="./PDFOFFLINE/manifest.json">
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
@@ -29,214 +19,29 @@
     <title>FREE-PDF-GENERATOR</title>
     <script src="./PDFOFFLINE/pdfmake.min.js"></script>
     <script src="./PDFOFFLINE/vfs_fonts.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="./PDFOFFLINE/tailwind.min.css"  />
     
+    <style>
+        .hide {
+            display:none;
+        }
+        body, input, textarea {
+            color: rgb(0, 62, 52);
+        }
+        #container {
+            background-color:#3C6E71;
+        }
+        textarea {
+            min-height:300px;
+        }
+    </style>
 </head>
-<style>
-    html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
-    body {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: rgb(67, 67, 67);
-    }
-    h1 {
-        text-align:center;
-        font-size: 40px;
-        margin-bottom:40px;
-    }
-    #container {
-        max-width:1024px;
-        margin:50px auto;
-        background-color: rgb(221, 221, 221);
-        padding:50px;
-        border: 0px solid gray;
-        border-radius: 10px;
-    }
-    #innercontainer {
-    max-width:720px;
-    margin: auto;
-    }
-    input[type=text], textarea {
-        display:block;
-        max-width:700px;
-        width:100%;
-        text-align:left;
-        margin: 20px auto;
-        line-height: 24px;
-        border-radius: 4px;
-        border: 1px solid rgb(194, 194, 194);
-        padding:8px;
-        
-    }
-    input[type=button] {
-        display:block;
-        margin:5px auto;
-        border-radius: 4px;
-    }
-    textarea {
-        min-height:300px;
-        border-radius: 4px;
-    }
-    #pdfbutton, #pdfbutton2, #pdfbutton3 {
-        display:block;
-        text-align:center;
-        margin: 40px auto;
-        max-width: 340px;
-        min-width:120px;
-        width:100%;
-        height:60px;
-        background-color: green;
-        border-radius: 4px;
-        border: rgb(255, 255, 255) solid 4px;
-        color: white;
-        font-size: 18px;
-        outline:none;
-    }
-    #pdfbutton4 {
-        display:block;
-        text-align:center;
-        margin: 40px auto;
-        max-width: 340px;
-        min-width:120px;
-        width:100%;
-        height:60px;
-        background-color: rgb(124, 124, 124);
-        border-radius: 4px;
-        border: rgb(50, 50, 50) solid 4px;
-        color: rgb(255, 255, 255);
-        font-size: 18px;
-        outline:none;
-    }
-    #pdfbutton:active,#pdfbutton2:active,#pdfbutton3:active {
-        border: rgb(0, 0, 0) solid 1px;
-        background-color: rgb(139, 249, 139);
-        color: black;
 
-    }
-
-    hr {
-        display:block;
-        margin-top:20px;
-        margin-bottom:30px;
-        
-    }
-    .hide {
-        display:none!important;
-    }
-    #passgen {
-        height:40px;
-        width: 220px;
-        border: 1px solid gray;
-        border-radius: 4px;
-        margin:0;
-        background-color: rgb(139, 249, 139);
-    }
-    #resetbutton {
-        height:40px;
-        width: 100px;
-        border: 1px solid gray;
-        border-radius: 4px;
-        margin-bottom:40px;
-    }
-    #passgen:hover {
-        background-color: green;
-        color: white;
-    }
-    #resetbutton:hover {
-        border: 2px solid black;
-    }
-
-
-    #innercontainer {
-    animation: fadeInAnimation ease 1s;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-}
-
-@keyframes fadeInAnimation {
-    0% {
-        opacity: 0;
-    }
-    100% {
-        opacity: 1;
-    }
-}
-label {
-    /* margin-top:15px; */
-    margin-bottom: 0;
-    padding-bottom: 0;
-    display:block;
-    position:relative;
-    top:10px;
-    left:4px;
-}
-p {
-    margin-bottom:20px;
-    line-height:24px;
-}
-p.note {
-    color: rgb(219, 219, 219);
-    text-align:center;
-}
-.copy {
-    font-weight:normal;
-    font-size: 14px;
-    color: rgb(162, 162, 162);
-    text-align:center;
-}
-.white-link a, .white-link a:visited {
-    color: white;
-}
-    
-</style>
-<body>
-   <script>
+<body class="bg-gray-800 text-white font-sans">
+    <script>
     var globalPassword = '';
     var filename = '';
-    var plaintext = '';
-   </script>
-    <div id='container'>
-        <div id='innercontainer'>
-        <h1>PDF MAKER</h1>
-        <p>This PDF creation tool runs BOTH online & offline in the browser. It does not send your content to the server - its all done locally in the browser. You can save any text based content as a PDF file, optionally give it a file name, and optionally encrypt with a password.</p>
-        
-        <p>To save it locally to your computer, right click on this page and select 'save as'. Choose a location - the desktop is usually the easiest. Then go to that location and double click on FREE-PDF-GENERATOR.html</p>
-        <p>When dealing with sensitive files always turn off your wifi or disable your network connection for security and privacy.</p>
-
-        
-        <input type="button" id="passgen" value="Generate Password" onclick="generatePDFPassword()"><br>
-        
-        <label for="myPassword">Password (optional):</label>
-        <input type="text" value="" class="" placeholder="Paste a password in or click Generate button above" id="myPassword">
-        <label for="myFileName">File Name (default is file.pdf):</label>
-        <input type="text"  value="" placeholder="Enter a file name" id="myFileName">
-        <label for="plaintext">Content:</label>
-    <textarea id="plaintext"  placeholder="type or paste content here"  ></textarea>
-    <input type="button" id="pdfbutton3" value=" MAKE PDF "
-    onclick="makePDF(filename)" />
-    <input type="button" id="pdfbutton4" class="hide" value=" SAVE PASSWORD AS PDF "
-    onclick="makePasswordPDF()" />
-
-
-    <script>
-        
+    var plaintext = '';    
 
         
 
@@ -312,8 +117,7 @@ p.note {
                 
         }
         }
-    </script>
-    <script>
+    
 
         function docDefinition(password = '', content) {
             let docDefinition = {
@@ -356,23 +160,47 @@ p.note {
 
         
         </script>
-  
-
-
-    </div>
-    </div>
-    <input type="button" value="RESET" id = "resetbutton" onclick="javascript:location.reload()">
-       
-    <p class="note">Note: all files are saved to your computer's downloads folder by default.<br>
-    To download and run this generator locally on your own computer, right click anywhere on the page and select 'save as'.<br> If you are having issues with your browser not downloading the dependent javascript files (which are required), click below to download the zip file.<br>Note Google Chrome may block the download. You can override this in the browser or use another browser such as<br>Firefox, Microsoft Edge, Brave or Safari (Mac). Alternatively just turn off your Internet and use this generator without downloading.</p>
-    <p class="note white-link">
-        <a download="pdf-generator.zip" href="https://pdfoffline.com/pdf-generator.zip">Download Zip File</a>
-    </p>
+    <div id='container' class="max-w-screen-md mx-auto bg-gray-300 p-20 mt-10 mb-0 rounded-lg pt-10">
+        <div id='innercontainer'>
+            <h1 class="text-4xl text-center mb-10 pt-0 ">PDF MAKER</h1>
+            <p class="text-sm pb-5">This PDF creation tool runs BOTH online & offline in the browser. It does not send your content to the server - its all done locally in the browser. You can save any text based content as a PDF file, optionally give it a file name, and optionally encrypt with a password.</p>
         
+        <p class="text-sm pb-5">To save it locally to your computer, right click on this page and select 'save as'. Choose a location - the desktop is usually the easiest. Then go to that location and double click on FREE-PDF-GENERATOR.html</p>
+        <p class="text-sm">When dealing with sensitive files always turn off your wifi or disable your network connection for security and privacy.</p>
+
         
-        <p class="copy">This code is public domain</p>
+        <input type="button" id="passgen" value="Generate Password" onclick="generatePDFPassword()"
+        class="cursor-pointer block bg-green-500 hover:bg-green-600 text-white py-2 px-4 rounded my-5">
 
+    <label for="myPassword" class="block mb-2">Password (optional):</label>
+    <input type="text" value="" placeholder="Paste a password in or click Generate button above" id="myPassword"
+        class="w-full py-2 px-4 border border-gray-300 rounded">
 
-    
+    <label for="myFileName" class="block mb-2 mt-5">File Name (default is file.pdf):</label>
+    <input type="text" value="" placeholder="Enter a file name" id="myFileName"
+        class="w-full py-2 px-4 border border-gray-300 rounded">
+
+    <label for="plaintext" class="block mb-2 mt-5">Content:</label>
+    <textarea id="plaintext" placeholder="type or paste content here"
+        class="w-full py-2 px-4 border border-gray-300 rounded"></textarea>
+
+    <input type="button" id="pdfbutton3" value=" MAKE PDF " onclick="makePDF(filename)"
+        class="cursor-pointer block mx-auto bg-green-500 hover:bg-green-600 text-white py-4 px-8 rounded mt-10 mb-0">
+
+    <input type="button" id="pdfbutton4" class="cursor-pointer hide bg-gray-500 hover:bg-gray-600 text-white py-2 px-4 rounded"
+        value=" SAVE PASSWORD AS PDF " onclick="makePasswordPDF()">
+
+        </div>
+    </div>
+    <input type="button" value="RESET" id="resetbutton" onclick="javascript:location.reload()"
+        class="cursor-pointer block mx-auto mt-4 mb-10 bg-gray-300 px-4 py-2 rounded">
+    <p class="text-sm pb-5 text-center text-gray-400">Note: all files are saved to your computer's downloads folder by default.<br>
+        To download and run this generator locally on your own computer, right-click anywhere on the page and select
+        'save as'.<br><br>Note Google Chrome may block the download. You
+        can override this in the browser or use another browser such as<br>Firefox, Microsoft Edge, Brave, or Safari
+        (Mac). Alternatively, just turn off your Internet and use this generator without downloading.</p>
+
+    <p class="copy text-center pb-20">This code is public domain</p>
 </body>
+
 </html>
